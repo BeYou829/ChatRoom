@@ -1,0 +1,61 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+*@
+@{
+    @model int
+}
+<h1>@ChatRoom.Controllers.ChatController.Rooms.GetValueOrDefault(Model)</h1>
+<div class="row">
+    <div class="col-12">
+        <input class="form-control" type="text" placeholder="User" id="User"></input>
+        <br>
+        <input class="form-control" type="text" placeholder="Text" id="Message"></input>
+        <br>
+        <div class="text-center">
+            <button id="btnSend" type="button" class="btn btn-success">Send</button>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-6">
+        <div id="Messages"></div>
+    </div>
+        <div class="col-6">
+        <div id="Notifications"></div>
+    </div>
+</div>
+
+
+<script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
+
+<script>
+    var connection = new signalR.HubConnectionBuilder().withUrl("/Chat").build();
+
+    connection.start().then(() => {
+        connection.invoke("AddToGroup", "@Model")
+    }).catch((e) => console.error(e));
+
+    document.getElementById("btnSend").addEventListener("click", (event) => {
+        let room = "@Model";
+        let user = document.getElementById("User").value;
+        let message = document.getElementById("Message").value;
+
+        connection.invoke("SendMessage", room, user, message)
+            .catch((err) => console.error(err.toString()));
+
+        document.getElementById("Message").value = "";
+        document.getElementById("Message").focus() = "";
+
+        event.preventDefault();
+    })
+
+    connection.on("ReceiveMessage", (User, Message) => {
+        var Message = "<div ><b> " + User + ": </b> " + Message + " </div >";
+        document.getElementById("Messages").innerHTML =
+            Message + document.getElementById("Messages").innerHTML;
+    });
+    
+
+</script>
