@@ -18,5 +18,16 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-image: url(fotoitla.png);
+    background-size: cover;
+    background-position: center;
+    
+}
+
+
+.div-move {
+    position: absolute;
+    top: 100px; /* Coordenada Y */
+    left: 100px; /* Coordenada X */
 }
