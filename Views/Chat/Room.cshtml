@@ -10,31 +10,26 @@
 <style src=" ~ /css/site.css"></style> *@
 
 <h1>@ChatRoom.Controllers.ChatController.Rooms.GetValueOrDefault(Model)</h1>
-
+<hr>
 <div class="row">
-    <div class="col-6">
+    <div class="col-9 text-center">
         <div id="Messages"></div>
-    </div>
-    <div class="col-6">
-        <div id="Notifications"></div>
     </div>
 </div>
 
 <div class="container">
-    <div class="row justify-content-center fixed-bottom m-5 w-25 ">
-        <div class="col-12  p-4 ">
-            <input class="form-control" type="text" placeholder="User" id="User"></input>
-            <br>
-            <input class="form-control" type="text" placeholder="Text" id="Message"></input>
-            <br>
-            <div class="text-center">
-                <button id="btnSend" type="button" class="btn btn-success">Send</button>
-            </div>
+<div class="row justify-content-center fixed-bottom m-5">
+    <div class="col-12 col-md-6 p-4">
+        <input class="form-control mx-auto w-75" type="text" placeholder="User" id="User"></input>
+        <br>
+        <input class="form-control mx-auto w-75" type="text" placeholder="Text" id="Message"></input>
+        <br>
+        <div class="text-center">
+                <button id="btnSend" type="button" class="btn btn-success pd-btn">Send</button>
         </div>
     </div>
 </div>
-
-
+</div>
 
 <script src="~/lib/microsoft/signalr/dist/browser/signalr.min.js"></script>
 
@@ -65,5 +60,4 @@
             Message + document.getElementById("Messages").innerHTML;
     });
     
-
 </script>

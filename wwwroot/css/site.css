@@ -31,3 +31,13 @@ body {
     top: 100px; /* Coordenada Y */
     left: 100px; /* Coordenada X */
 }
+
+.custom-blue {
+    background-color: #023877;
+}
+.custom-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.pd-btn{
+    padding: 2px 10px 2px 10px;
+}

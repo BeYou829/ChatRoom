@@ -6,10 +6,11 @@
 <div class="row">
     <div class="col-md-8 offset-2">
         <h2>Chat Room</h2>
+        <hr>
         <ul class="list-group">
             @foreach( var room in ChatRoom.Controllers.ChatController.Rooms)
             {
-                <li class="list-group-item"><a href="~/Chat/Room?room=@room.Key">@room.Value</a></li>
+                <li class="list-group-item m-1 rounded-4"><a class="text-decoration-none" href="~/Chat/Room?room=@room.Key">@room.Value</a></li>
             }
         </ul>
     </div>
